@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <form class="form" action="/stu/1" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="name" placeholder="学员姓名"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="age" placeholder="学生年龄"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="gender" placeholder="学生性别"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="major" placeholder="学生专业"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="grade" placeholder="学生年级"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="file" name="photo" placeholder="学生照片"/>
+            </div>
+            <div class="form-group">
+                {% for sub in subjects %}
+                    <input type="checkbox" name="sub" value="{{ sub.id }}"/><label>{{ sub.name }}</label>
+                {% endfor %}
+            </div>
+            <a class="form-group">
+                <input class="btn btn-dark btn-block" type="submit" value="添加学生"/></a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

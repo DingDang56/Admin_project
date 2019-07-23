@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    学生信息
+{% endblock %}
+{% block style %}
+    <style>
+    table{background-color:#FFFFFF;border:1px solid #999;margin:auto;cellspacing:1px;}
+    table tr{border:1px solid #999;}
+    table tr td{border:1px solid #999;}
+    </style>
+{% endblock %}
+{% block content %}
+{#    <div class="box1">#}
+    <table class="text-center lead">
+        <tr >
+            <th colspan="8">{{ stu.name }}个人信息</th>
+        </tr>
+{#        <tr>#}
+{#            <td>学生ID</td>#}
+{#            <td>{{ stu.id }}</td>#}
+{#            <td>学生姓名{{ stu.name }}</td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>{{ stu.name }}</td>#}
+{#        </tr>#}
+{##}
+{#            <td>{{ stu.age }}</td>#}
+        <tr>
+
+            <td colspan="4"  rowspan="3"><img width="80" height="112" src="/static/{{ stu.photo }}"</td>
+            <td>ID</td>
+            <td >{{ stu.id }}</td>
+            <td >姓名</td>
+            <td >{{ stu.name }}</td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td>{{ stu.gender }}</td>
+            <td>年龄</td>
+            <td>{{ stu.age }}</td>
+        </tr>
+
+         <tr>
+            <td width="80" height="40">年级</td>
+            <td width="120">{{ stu.grade }}</td>
+            <td width="80">专业</td>
+            <td width="120">{{ stu.major }}</td>
+
+        </tr>
+
+    </table>
+{#    </div>#}
+{% endblock %}

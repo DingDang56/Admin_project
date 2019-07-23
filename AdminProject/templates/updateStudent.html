@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <form class="form" action="/stu/1" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="name" placeholder="{{ stu.name }}"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="age" placeholder="{{ stu.age }}"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="gender" placeholder="{{ stu.gender }}"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="major" placeholder="{{ stu.major }}"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control form-control-user" type="text" name="grade" placeholder="{{ stu.grade }}"/>
+            </div>
+{#            <div class="form-group">#}
+{#                {% for sub in subjects %}#}
+{#                    <input type="checkbox" name="sub" value="{{ sub.id }}"/><label>{{ sub.name }}</label>#}
+{#                {% endfor %}#}
+{#            </div>#}
+            <a class="form-group">
+                <input class="btn btn-dark btn-block" type="submit" value="确认修改"/></a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

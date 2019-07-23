@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{#    {% csrf_token %}#}
+    <input type="file" id="img">
+{#    <input type="button" id="submit" value="提交">#}
+{#    <span id="submit">hello</span>#}
+    <input type="button" id="submit" value="提交">
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(
+            function(){
+                $("#submit").click(function (){
+                    {#alter("hello")#}
+                    var forms = new FormData();
+                    forms.append("image",document.getElementById("img").files[0]);
+                    forms.append("csrfmiddlewaretoken","{% csrf_token %}");
+                    console.log(forms);
+                    $.ajax({
+                        url:"/ajax_data/",
+                        type:"POST",
+                        data:forms,
+                        processData:false,
+                        contentType:false,
+                        success:function(data){
+                            console.log(data)
+                        },
+                        error:function(error){
+                            console.log(error)
+                        }
+                    })
+                })
+            }
+        )
+    </script>
+{% endblock %}

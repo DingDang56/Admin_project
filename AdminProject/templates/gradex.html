@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <table class="table table-bordered text-center">
+    <caption>{{ student.grade }}年级学生</caption>
+        <thead>
+        </thead>
+        <tbody>
+            {% for student in student_list %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td><a href="/stuResource/{{ student.id }}">{{ student.name }}</a></td>
+                    <td>{{ student.gender }}</td>
+                    <td>{{ student.major }}</td>
+                    <td>{{ student.grade }}</td>
+                    <td>
+                        <button class="btn btn-primary">转班</button>
+                        <a class="btn btn-warning" href="/updateStudent/{{ student.id }}">修改</a>
+                        <a class="btn btn-danger" href="/dismiss/{{ student.id }}">劝退</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <ul class="pagination" style="float:right;margin-right:55px;">
+        <label class="paginate_button page-item"><a href="/stu/1" class="page-link">首页</a></label>
+        {% for page in page_range %}
+            <li class="paginate_button page-item"><a href="/stu/{{ page }}" class="page-link">{{ page }}</a></li>
+        {% endfor %}
+     <label class="paginate_button page-item"><a href="/stu/101" class="page-link">尾页</a></label>
+    </ul>
+{% endblock %}
